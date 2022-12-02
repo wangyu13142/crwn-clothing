@@ -1,17 +1,14 @@
-import { useContext } from "react";
-import ProductCard from "../../components/product-card/product-card.component";
-import { ProductsContext } from "../../contexts/products.context";
-import './shop.styles.scss'
+import { Route,Routes } from "react-router-dom";
+import CategoriesPreview from "../categories-preview/categories.component.component";
+import Category from "../category/category.component";
 // 商品页面
 const Shop = () => {
-    const { products } = useContext(ProductsContext)
-    return (
-        <div className="products-container">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product}>
-              </ProductCard>
-            ))}
-        </div>
-    )
-}
+  return (
+    <Routes>
+      <Route index element={<CategoriesPreview></CategoriesPreview>}></Route>
+      {/* 动态匹配参数 */}
+      <Route path=":category" element={<Category></Category>}></Route>
+    </Routes>
+  );
+};
 export default Shop;

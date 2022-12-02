@@ -13,7 +13,7 @@ const App = () => {
       <Route path='/' element={<Navigation></Navigation>}>
         {/* 此时就相当于子路由 /home/shop 需要在父组件Home 定义进行子路由的显示的位置 Outlet  */}
         <Route index element={<Home></Home>}></Route>
-        <Route path='shop' element={<Shop></Shop>}></Route>
+        <Route path='shop/*' element={<Shop></Shop>}></Route>
         <Route path='auth' element={<Authentication></Authentication>}></Route>
         <Route path='checkout' element={<CheckOut></CheckOut>}></Route>
       </Route>

@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 // 导入全局上下文
 import { UserProvider } from './contexts/user.context';
-import { ProductsProvider } from './contexts/products.context';
+import { CategoriesProvider } from './contexts/categories.context';
 import { CartContextProvider } from './contexts/cart.context';
 
 import './index.scss';
@@ -18,11 +18,11 @@ root.render(
     {/* 将整个项目在浏览器路由组件中进行包裹，这样就可以进行全局使用。 */}
     <BrowserRouter>
       <UserProvider>
-        <ProductsProvider>
+        <CategoriesProvider>
           <CartContextProvider>
             <App />
           </CartContextProvider>
-        </ProductsProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
