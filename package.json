@@ -12,7 +12,10 @@
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
     "sass": "^1.56.1",
+<<<<<<< HEAD
     "styled-components": "^5.3.6",
+=======
+>>>>>>> 1be1957 (updating our directory page with directory component and category item component)
     "web-vitals": "^2.1.4"
   },
   "scripts": {

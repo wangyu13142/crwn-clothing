@@ -16,7 +16,11 @@
             transition: transform 6s cubic-bezier(0.25,0.45,0.45,0.95);
         }
         & .category-body-container{
+<<<<<<< HEAD
             background-color: rgb(225 224 224);
+=======
+            opacity: 0.7;
+>>>>>>> 1be1957 (updating our directory page with directory component and category item component)
         }
     }
       &.large{
@@ -43,7 +47,11 @@
         justify-content: space-evenly;
         align-items: center;
         border: 1px solid black;
+<<<<<<< HEAD
         background-color: rgb(225 224 224 / 50%);
+=======
+        background-color: rgb(225, 224, 224) ;
+>>>>>>> 1be1957 (updating our directory page with directory component and category item component)
         user-select: none;
         color: rgb(74,74,74);
         h2,p{
