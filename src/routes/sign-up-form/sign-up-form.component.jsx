@@ -1,5 +1,4 @@
-import { async } from "@firebase/util";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils'
 
 import FormInput from "../../components/form-input/form-input.compnent";
@@ -11,7 +10,7 @@ const defaultFields = {
     password: '',
     confirmPassword: ''
 }
-const SignInForm = () => {
+const SignUpForm = () => {
     const [formFileds, setFormFields] = useState(defaultFields);
     const { displayName, email, password, confirmPassword } = formFileds;
     // 重置表单
@@ -31,7 +30,7 @@ const SignInForm = () => {
             restFields();
         } catch (error) {
             // 用户存在的情况下
-            if (error.code == 'auth/email-already-in-use') {
+            if (error.code === 'auth/email-already-in-use') {
                 alert('Can not Create user,email already in use');
             } else {
                 alert('user creation encountered an error', error);
@@ -62,4 +61,4 @@ const SignInForm = () => {
         </div>
     )
 }
-export default SignInForm;
+export default SignUpForm;

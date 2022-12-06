@@ -1,6 +1,6 @@
 import Home from './routes/home/home.component'
 import Navigation from './routes/navigation/navigation.componet'
-import SignIn from './routes/sign-in/sign-in.component'
+import Authentication from './routes/authentication/authentication.component'
 import { Routes, Route } from 'react-router-dom'
 
 const Shop = () => {
@@ -15,7 +15,7 @@ const App = () => {
         {/* 此时就相当于子路由 /home/shop 需要在父组件Home 定义进行子路由的显示的位置 Outlet  */}
         <Route index element={<Home></Home>}></Route>
         <Route path='shop' element={<Shop></Shop>}></Route>
-        <Route path='sign-in' element={<SignIn></SignIn>}></Route>
+        <Route path='auth' element={<Authentication></Authentication>}></Route>
       </Route>
     </Routes>
   );
