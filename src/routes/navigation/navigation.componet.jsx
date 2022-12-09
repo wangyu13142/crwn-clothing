@@ -1,11 +1,23 @@
 // 相当于占位符，往往用于组件返回的根节点，实际上什么也不显示
-import { Fragment } from "react";
-import { Outlet, Link } from "react-router-dom"; 
+import { Fragment, useContext } from "react";
+import { UserContext } from "../../contexts/user.context";
+import { CartContext } from "../../contexts/cart.context"
+import { Outlet, Link } from "react-router-dom";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 // 将svg图片 变成组件 叫 CrwnLogo
-import {ReactComponent as CrwnLogo} from '../../assets/crown.svg'
+import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
+
+import CartIcon from '../../components/cart-icon/cart-icon.component'
+import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 // 导入样式
 import './navigation.styles.scss'
 const Navigation = () => {
+    const { currentUser } = useContext(UserContext);
+    const { isCartOpen } = useContext(CartContext)
+    // 用户退出登录
+    const signOutHandler = async () => {
+        await signOutUser();
+    }
     return (
         <Fragment>
             {/* 导航栏部分 */}
@@ -19,10 +31,14 @@ const Navigation = () => {
                     <Link to='/shop' className="nav-menu-list">
                         SHOP
                     </Link>
-                    <Link to='/auth' className="nav-menu-list">
+                    {currentUser ? (<span onClick={signOutHandler} className="nav-menu-list">
+                        SIGN OUT
+                    </span>) : (<Link to='/auth' className="nav-menu-list">
                         SIGN IN
-                    </Link>
+                    </Link>)}
+                    <CartIcon />
                 </div>
+                {isCartOpen && <CartDropdown></CartDropdown>}
             </div>
             <Outlet></Outlet>
         </Fragment>

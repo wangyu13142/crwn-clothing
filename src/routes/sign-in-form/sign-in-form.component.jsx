@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+// 导入并使用全局上下文
+import { useState, useContext } from "react";
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils'
 
 import FormInput from "../../components/form-input/form-input.compnent";
@@ -16,17 +16,15 @@ const SignInForm = () => {
     const restFields = () => {
         setFormFields(defaultFields);
     }
-
+    // 使用谷歌方式登录
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
+        await signInWithGooglePopup();
     }
+    // 使用普通的邮箱密码进行登录
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password)
-            console.log(response);
+            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             // 清空表单
             restFields();
         } catch (error) {
@@ -61,7 +59,7 @@ const SignInForm = () => {
                 <FormInput label='Password:' type="password" name="password" value={password} onChange={changeFields} />
 
                 <div className="button-container">
-                    <Button type="submit" >Sign In</Button>
+                    <Button type="submit">Sign In</Button>
                     <Button type="button" onClick={signInWithGoogle} btnType="google" >Google Sign In</Button>
                 </div>
             </form>
