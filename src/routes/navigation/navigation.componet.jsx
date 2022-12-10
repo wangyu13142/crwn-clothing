@@ -40,6 +40,7 @@ const Navigation = () => {
                 </div>
                 {isCartOpen && <CartDropdown></CartDropdown>}
             </div>
+            {/* 整个框架显示的位置 */}
             <Outlet></Outlet>
         </Fragment>
     )
